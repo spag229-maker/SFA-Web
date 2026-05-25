@@ -8,20 +8,23 @@
     padding: 0;
     margin: 0;
 }
+
 body {
-     background-color: #F6F6F6;
-     font-family: "montserrat",sans-serif;
+    background-color: #F6F6F6;
+    font-family: "montserrat", sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: black
-}
-
-.container {
+.container,
+.main-container {
     width: 1200px;
     margin: 0 auto;
     height: 100%;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 
 #header {
@@ -31,6 +34,7 @@ a {
     justify-content: space-evenly;
     padding: 20px 0 20px 0;
     background-color: white;
+    margin-bottom: 20px;
 }
 
 .logo {
@@ -41,16 +45,24 @@ a {
     border-radius: 50px;
 }
 
-li {
-    color: #868686;
-    list-style: none;
-    margin: 0 30px 0 30px;
+li a {
+    text-decoration: none;
     display: flex;
     flex-direction: column;
+    color: #868686;
     align-items: center;
 }
 
-li:first-child {
+.active {
+    color: #000;
+}
+
+li {
+    list-style: none;
+    margin: 0 30px 0 30px;
+}
+
+nav ul li:first-child {
     color: #000;
 }
 
@@ -66,6 +78,7 @@ li:first-child {
     background-color: #868686;
     border: 1px solid #868686;
 }
+
 .rounded-line-active {
     background-color: #000;
     border: 1px solid #000;
@@ -85,4 +98,299 @@ li:hover .rounded-line-active {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.searchFilter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.searchStr,
+.filterStr {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    max-width: 400px;
+    background-color: #FEFEFE;
+    border: 2px solid #E9E9E9;
+    border-radius: 15px;
+}
+
+.SearchInt {
+    margin-left: 15px;
+    outline: none;
+    border: none;
+    color: #838383;
+    font-size: 22px;
+}
+
+.filterStr {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100px;
+}
+
+.filterTitle {
+    color: #868686;
+    font-size: 22px;
+}
+
+.filter-title:hover .rounded-line {
+    opacity: 1;
+}
+
+
+.titleActive {
+    color: #000;
+}
+
+.filter-headers {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.date-list {
+    display: none;
+}
+
+.category-item,
+.category-item-active,
+.date-item,
+.date-item-active {
+    padding: 10px;
+    margin: 0 8px;
+    background-color: #F6F6F6;
+    border: 2px solid #E9E9E9;
+    border-radius: 40px;
+}
+
+.category-item-active,
+.date-item-active {
+    border: 1px solid #A2D2FF;
+    background-color: #A2D2FF;
+    color: #ffffff;
+}
+
+.products-section {
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FEFEFE;
+    border: 2px solid #E9E9E9;
+    border-radius: 15px;
+    width: 700px;
+    height: 60vh;
+    gap: 20px;
+}
+
+.products-card {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #E9E9E9;
+    border-radius: 30px;
+    padding: 0 15px;
+}
+
+.icon {
+    height: 45px;
+    width: 45px;
+    background-color: #E8E8E8;
+    border-radius: 50px;
+}
+
+.products-name {
+    color: #000;
+    font-size: 16px;
+}
+
+.counter {
+    padding: 0 5px;
+    margin-top: 4px;
+    background-color: #F6F6F6;
+    border: 2px solid #E9E9E9;
+    border-radius: 15px;
+    height: 15px;
+    width: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.count {
+    font-size: 13px;
+}
+
+.BtnMinus, .BtnPlus {
+    line-height: 1px;
+    width: 12px;
+    border: none;
+    background-color: #F6F6F6;
+    cursor: pointer;
+}
+
+.product-status {
+    text-align: center;
+    padding: 2px 6px 2px 6px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+.fresh {
+    background-color: #B8FFBD;
+    color: #00B922;
+}
+
+.bad {
+    background-color: #FFB8B9;
+    color: #B90003;
+}
+
+.medium {
+    background-color: #FFFDB8;
+    color: #B9AA00;
+}
+
+.deleteProduct {
+    background-color: inherit;
+    border: none;
+    margin-left: auto;
+    scale: 1.2;
+    cursor: pointer;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50px;
+    background-color: #A2D2FF;
+    text-align: center;
+
+    font-size: 40px;
+    color: #fff;
+    line-height: 75px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.nameMail {
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.userName {
+    font-size: 18px;
+}
+
+.userMail {
+    font-size: 12px;
+    color: #868686;
+    text-decoration: underline;
+}
+
+
+.pictureChange {
+    background-color: #FEFEFE;
+    border: 2px solid #E9E9E9;
+    border-radius: 15px;
+    padding: 12px 10px;
+    width: fit-content;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+}
+
+.exit {
+    padding-top: 20px;
+    color: #D41111;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.settings,
+.userSettings {
+    width: 300px;
+    background-color: #FEFEFE;
+    border: 2px solid #E9E9E9;
+    border-radius: 15px;
+}
+
+.settings-plate {
+    display: flex;
+    flex-direction: row;
+    padding: 25px 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings-plate:not(:last-child) {
+    border-bottom: 2px solid #E9E9E9;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 15px;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #FEFEFE;
+    border: 2px solid #E9E9E9;
+    border-radius: 15px;
+    opacity: 0;
+}
+
+.popup h2 {
+    padding-bottom: 10px;
+}
+
+.popupPlate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.deleteStatus {
+    padding: 5px 12px;
+    background-color: #FFB8B9;
+    color: #C2171A;
+    font-size: 12px;
+    border-radius: 15px;
+    height: 15px;
+}
+
+.deletedProduct {
+    background-color: inherit;
+    border: none;
+    font-size: 12px;
+    font-family: 'montserrat', sans-serif;
+    cursor: pointer;
 }
