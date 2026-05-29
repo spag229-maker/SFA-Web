@@ -354,28 +354,39 @@ li:hover .rounded-line-active {
     border-bottom: 2px solid #E9E9E9;
 }
 
+.popup-overlay {
+    position: fixed; /* Фиксируем на весь экран */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Черный фон с затемнением 50% */
+    z-index: 9;
+}
+
 .popup {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     padding: 15px;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 480px;
     background-color: #FEFEFE;
     border: 2px solid #E9E9E9;
     border-radius: 15px;
-    opacity: 0;
+    text-align: center;
+    /*opacity: 0;*/
 }
 
 .popup h2 {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .popupPlate {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 160px 160px 160px;
     align-items: center;
-    justify-content: space-between;
+    padding-bottom: 10px;
 }
 
 .deleteStatus {
@@ -385,6 +396,7 @@ li:hover .rounded-line-active {
     font-size: 12px;
     border-radius: 15px;
     height: 15px;
+    text-align: center;
 }
 
 .deletedProduct {
