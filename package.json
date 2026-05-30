@@ -2,7 +2,7 @@
   "name": "SFA",
   "version": "1.0.0",
   "description": "",
-  "main": "src/scripts/index.js",
+  "main": "src/scripts/settings.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
