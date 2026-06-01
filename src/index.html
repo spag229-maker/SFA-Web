@@ -90,6 +90,15 @@
                         Мясо
                     </li>
                     <li class="category-item">
+                        Овощи
+                    </li>
+                    <li class="category-item">
+                        Фрукты
+                    </li>
+                    <li class="category-item">
+                        Напитки
+                    </li>
+                    <li class="category-item">
                         <span>Прочее</span>
                     </li>
                 </ul>
@@ -110,7 +119,7 @@
             </div>
         </div>
         <section class="products-section">
-            <article class="products-card">
+            <article class="products-card" data-category="мясо">
                 <div class="icon"></div>
                 <div class="product" id="курица">
                     <span class="products-name">Курица</span>
@@ -137,7 +146,7 @@
                     </svg>
                 </button>
             </article>
-            <article class="products-card">
+            <article class="products-card" data-category="мясо">
                 <div class="icon"></div>
                 <div class="product" id="фарш">
                     <span class="products-name">Фарш</span>
@@ -164,7 +173,7 @@
                     </svg>
                 </button>
             </article>
-            <article class="products-card">
+            <article class="products-card" data-category="молочное">
                 <div class="icon"></div>
                 <div class="product" id="Молоко">
                     <span class="products-name">Молоко</span>
@@ -201,7 +210,7 @@
 
         <div class="addPopup-name">
             <div class="icon"></div>
-            <input type="text" placeholder="Название">
+            <input type="text" id="productName" placeholder="Название">
         </div>
 
         <div class="addPopup-count">
@@ -216,8 +225,10 @@
             </div>
         </div>
 
-        <input type="date" class="addPopup-date" placeholder="Дата изготовления">
-        <input type="date" class="addPopup-date" placeholder="Дата просрочки">
+        <div class="addPopup-date-wrapper">
+            <label for="productExpiry">Дата просрочки</label>
+            <input type="date" class="addPopup-date" id="productExpiry">
+        </div>
 
         <div class="addPopup-category">
             <span>Категория</span>
@@ -234,6 +245,29 @@
         <div class="addPopup-btns">
             <button id="cancelProduct">Отмена</button>
             <button id="confirmProduct">Добавить</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-overlay" id="productCounter">
+    <div class="popup" id="changeCountPopup">
+        <h2 id="changeCountTitle"></h2>
+
+        <div class="addPopup-count">
+            <input type="number" id="changeCountInput" min="1" value="1">
+            <div class="addPopup-units">
+                <span>Единица измерения</span>
+                <div class="units-list" id="changeCountUnits">
+                    <button class="unit-btn unit-btn-active">шт</button>
+                    <button class="unit-btn">кг</button>
+                    <button class="unit-btn">л</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="addPopup-btns">
+            <button id="cancelCount">Отмена</button>
+            <button id="confirmCount">Изменить</button>
         </div>
     </div>
 </div>

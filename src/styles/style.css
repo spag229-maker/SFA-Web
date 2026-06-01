@@ -37,6 +37,95 @@ body {
     margin-bottom: 20px;
 }
 
+#LogTitle {
+    line-height: 52px;
+}
+
+.register-page {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.register-form {
+    transition: .2s;
+}
+
+.register-page h1 {
+    padding-bottom: 20px;
+}
+
+.input-group {
+    width: 100%;
+    color: #B90003;
+    text-align: start;
+    transition: .3s;
+}
+
+.input-group input {
+    transition: .2s ease;
+}
+
+.input-group input:hover {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.input-group input {
+    width: 100%;
+    background-color: #FEFEFE;
+    outline: none;
+    border: 2px solid #E9E9E9;
+    border-radius: 15px;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #7B7B7B;
+    font-family: "montserrat", sans-serif;
+}
+
+.error-message {
+    font-size: 12px;
+    padding-left: 3px;
+    opacity: 0;
+    transition: .3s;
+}
+
+.signBtn {
+    margin-top: 35px;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    background-color: #A2D2FF;
+    padding: 12px 30px;
+    font-family: "montserrat", sans-serif;
+    font-size: 22px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signBtn:hover {
+    background-color: #73bffb;
+}
+
+.login {
+    margin-top: 20px;
+    display: block;
+    font-size: 18px;
+    color: #7B7B7B;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+#logInBtn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: "montserrat", sans-serif;
+}
+
 .logo {
     width: 50px;
     height: 50px;
@@ -72,6 +161,7 @@ nav ul li:first-child {
     width: 100%;
     border-radius: 20px;
     opacity: 0;
+    transition: 0.2s ease;
 }
 
 .rounded-line {
@@ -132,7 +222,7 @@ li:hover .rounded-line-active {
     justify-content: center;
     height: 80px;
     width: 100%;
-    background-color: #F6F6F6;
+    background-color: #FEFEFE;
     border: 2px solid #E9E9E9;
     border-radius: 15px;
     cursor: pointer;
@@ -152,13 +242,15 @@ li:hover .rounded-line-active {
     border: none;
     color: #838383;
     font-size: 22px;
+    font-family: "montserrat", sans-serif;
 }
 
 .filterStr {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: 100px;
+    height: auto;
+    padding: 15px 15px;
 }
 
 .filterTitle {
@@ -186,6 +278,7 @@ li:hover .rounded-line-active {
 .category-list {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .date-list {
@@ -202,13 +295,14 @@ li:hover .rounded-line-active {
     align-items: center;
     justify-content: center;
     padding: 0 10px;
-    margin: 0 8px;
+    margin: 0 8px 8px 0;
     height: 34px;
     background-color: #F6F6F6;
     border: 2px solid #E9E9E9;
     border-radius: 40px;
     cursor: pointer;
     font-size: 16px;
+    transition: 0.2s;
 }
 
 .category-item-active,
@@ -216,6 +310,10 @@ li:hover .rounded-line-active {
     border: 1px solid #A2D2FF;
     background-color: #A2D2FF;
     color: #ffffff;
+}
+
+.category-item:hover{
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
 }
 
 .products-section {
@@ -226,8 +324,10 @@ li:hover .rounded-line-active {
     border: 2px solid #E9E9E9;
     border-radius: 15px;
     width: 700px;
-    height: 60vh;
+    height: 50vh;
     gap: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .products-card {
@@ -237,7 +337,7 @@ li:hover .rounded-line-active {
     gap: 10px;
     border: 1px solid #E9E9E9;
     border-radius: 30px;
-    padding: 0 15px;
+    padding: 8px 15px;
 }
 
 .icon {
@@ -253,27 +353,38 @@ li:hover .rounded-line-active {
 }
 
 .counter {
-    padding: 0 5px;
+    padding: 1px 5px;
     margin-top: 4px;
     background-color: #F6F6F6;
     border: 2px solid #E9E9E9;
     border-radius: 15px;
-    height: 15px;
     width: 75px;
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-between;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.counter:hover {
+    background-color: #A2D2FF;
 }
 
 .count {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
     font-size: 13px;
+    line-height: 1.1;
 }
 
 .BtnMinus, .BtnPlus {
-    line-height: 1px;
+    line-height: 1.1;
     width: 12px;
     border: none;
-    background-color: #F6F6F6;
+    background-color: transparent;
     cursor: pointer;
 }
 
@@ -307,6 +418,14 @@ li:hover .rounded-line-active {
     cursor: pointer;
 }
 
+.deleteProduct svg {
+    transition: 0.3s;
+}
+
+.deleteProduct:hover svg {
+    scale: 1.2;
+}
+
 .user {
     display: flex;
     flex-direction: column;
@@ -320,7 +439,7 @@ li:hover .rounded-line-active {
     border-radius: 50px;
     background-color: #A2D2FF;
     text-align: center;
-
+    cursor: pointer;
     font-size: 40px;
     color: #fff;
     line-height: 75px;
@@ -360,14 +479,19 @@ li:hover .rounded-line-active {
     display: flex;
     align-items: start;
     gap: 10px;
+    cursor: pointer;
 }
 
 .exit {
     padding-top: 20px;
-    color: #D41111;
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+#logOut {
+    text-decoration: none;
+    color: #D41111;
 }
 
 .settings,
@@ -385,6 +509,12 @@ li:hover .rounded-line-active {
     align-items: center;
     justify-content: space-between;
     height: 25px;
+    transition: .2s ease;
+    cursor: pointer;
+}
+
+.settings-plate:hover {
+    background-color: #F6F6F6;
 }
 
 #history {
@@ -395,12 +525,12 @@ li:hover .rounded-line-active {
 }
 
 .popup-overlay {
-    position: fixed; /* Фиксируем на весь экран */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Черный фон с затемнением 50% */
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 9;
     display: none;
 }
@@ -409,7 +539,7 @@ li:hover .rounded-line-active {
     position: absolute;
     top: 45%;
     left: 50%;
-    padding: 15px;
+    padding: 20px;
     transform: translate(-50%, -50%);
     width: 480px;
     background-color: #FEFEFE;
@@ -489,7 +619,8 @@ li:hover .rounded-line-active {
 }
 
 .addPopup-name input {
-    flex: 1;
+    width: 60%;
+    margin: 0 auto;
     padding: 12px 15px;
     border: 2px solid #E9E9E9;
     border-radius: 40px;
@@ -497,6 +628,11 @@ li:hover .rounded-line-active {
     font-family: 'montserrat', sans-serif;
     font-size: 16px;
     color: #868686;
+    transition: .2s ease;
+}
+
+.addPopup-name input:hover {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
 }
 
 .addPopup-count {
@@ -548,16 +684,29 @@ li:hover .rounded-line-active {
     color: #fff;
 }
 
-.addPopup-date {
+.addPopup-date-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
     padding: 12px 15px;
     border: 2px solid #E9E9E9;
     border-radius: 40px;
+    box-sizing: border-box;
+}
+
+.addPopup-date-wrapper label {
+    color: #868686;
+    font-size: 16px;
+}
+
+.addPopup-date-wrapper input {
+    border: none;
     outline: none;
     font-family: 'montserrat', sans-serif;
     font-size: 16px;
     color: #868686;
-    width: 100%;
-    box-sizing: border-box;
+    background: transparent;
 }
 
 .addPopup-category > span {
@@ -609,4 +758,32 @@ li:hover .rounded-line-active {
     background: #A2D2FF;
     border-color: #A2D2FF;
     color: #fff;
+}
+
+#changeCountPopup .addPopup-count {
+    justify-content: space-evenly;
+    align-content: center;
+    padding-bottom: 15px;
+}
+
+.addPopup-name {
+    margin-bottom: 20px;
+}
+
+#confirmNameChange {
+    background-color: #A2D2FF;
+    transition: .2s ease;
+}
+
+#confirmNameChange:hover {
+    background-color: #73bffb;
+}
+
+#confirmPasswordChange {
+    background-color: #A2D2FF;
+    transition: .2s ease;
+}
+
+#confirmPasswordChange:hover {
+    background-color: #73bffb;
 }
