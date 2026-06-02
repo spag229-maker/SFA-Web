@@ -84,7 +84,7 @@ window.onload = function() {
 
             if (user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                window.location.href = 'index.html';
+                window.location.href = 'view.html';
             } else {
                 alert('Логин или пароль не совпадают');
             }
