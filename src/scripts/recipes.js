@@ -18,7 +18,7 @@ document.querySelectorAll('#nav-list a').forEach(link => {
     const line = link.querySelector('.rounded-line-active');
     if (line) line.className = 'rounded-line';
 });
-const recipesLink = document.querySelector('#nav-list a[href="index.html"]');
+const recipesLink = document.querySelector('#nav-list a[href="recipes.html"]');
 if (recipesLink) {
     recipesLink.classList.add('active');
     const line = recipesLink.querySelector('.rounded-line');
