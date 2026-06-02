@@ -15,13 +15,13 @@
                 <li><a href="index.html" class="active">
                     <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.8045 25.8333H4.875C4.32272 25.8333 3.875 25.3856 3.875 24.8333V9.16667C3.875 6.95753 5.66586 5.16667 7.875 5.16667H23.125C25.3341 5.16667 27.125 6.95753 27.125 9.16667V14.7051"
-                              stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.04167 18.0833H12.9167" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                              stroke="#868686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.04167 18.0833H12.9167" stroke="#868686" stroke-width="2" stroke-linecap="round"
                               stroke-linejoin="round"/>
-                        <path d="M9.04167 12.9167H16.7917" stroke="#222222" stroke-width="2" stroke-linecap="round"
+                        <path d="M9.04167 12.9167H16.7917" stroke="#868686" stroke-width="2" stroke-linecap="round"
                               stroke-linejoin="round"/>
-                        <circle cx="21.3125" cy="20.0208" r="3.52083" stroke="#222222" stroke-width="2"/>
-                        <path d="M23.8958 22.6042L27.7708 26.4792" stroke="#222222" stroke-width="2"
+                        <circle cx="21.3125" cy="20.0208" r="3.52083" stroke="#868686" stroke-width="2"/>
+                        <path d="M23.8958 22.6042L27.7708 26.4792" stroke="#868686" stroke-width="2"
                               stroke-linecap="round"/>
                     </svg>
                     Обзор
@@ -30,13 +30,13 @@
                 <li><a href="recipes.html">
                     <svg width="27" height="29" viewBox="0 0 27 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.66699 21L8.27659 24.6576C8.54265 26.2539 8.67567 27.0521 9.23516 27.526C9.79465 28 10.6038 28 12.2222 28H17.1118C18.7302 28 19.5393 28 20.0988 27.526C20.6583 27.0521 20.7913 26.2539 21.0574 24.6576L21.667 21"
-                              stroke="#868686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16.667 4C17.267 2.66667 18.467 2 19.667 2" stroke="#868686" stroke-width="2"
+                              stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.667 4C17.267 2.66667 18.467 2 19.667 2" stroke="#222222" stroke-width="2"
                               stroke-linecap="round"/>
-                        <circle cx="14.667" cy="7" r="3" stroke="#868686" stroke-width="2" stroke-linecap="round"
+                        <circle cx="14.667" cy="7" r="3" stroke="#222222" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"/>
                         <path d="M17.334 6.47754C19.0951 7.13171 20.5495 8.41447 21.4268 10.0518C24.1971 10.4233 26.333 12.7952 26.333 15.667C26.3328 18.7963 23.7963 21.3328 20.667 21.333C19.6647 21.333 18.7223 21.0705 17.9053 20.6133C16.9214 21.0732 15.8241 21.333 14.667 21.333C13.5097 21.333 12.412 21.0733 11.4277 20.6133C10.611 21.0703 9.66922 21.3329 8.66699 21.333C5.53784 21.3328 3.00021 18.7965 3 15.667C3 12.796 5.13524 10.4244 7.9043 10.0518C8.78166 8.41386 10.238 7.13154 12 6.47754V8.66895C10.8794 9.26804 9.98139 10.2302 9.46973 11.4023C9.31398 11.7585 8.96582 11.9927 8.57715 12.002C6.59381 12.0494 5 13.6721 5 15.667L5.00488 15.8555C5.10316 17.7925 6.70525 19.3328 8.66699 19.333L8.96191 19.3213C9.64251 19.267 10.2692 19.0262 10.7949 18.6504C11.1119 18.4237 11.5323 18.4022 11.8711 18.5947C12.6962 19.0639 13.6492 19.333 14.667 19.333L15.0449 19.3203C15.9202 19.2624 16.7398 19.0053 17.4619 18.5947L17.5918 18.5322C17.9036 18.4103 18.2605 18.452 18.5381 18.6504C19.1388 19.0799 19.8722 19.3329 20.667 19.333L20.8555 19.3281C22.7926 19.2299 24.3328 17.6286 24.333 15.667C24.333 13.6714 22.7389 12.0486 20.7549 12.002C20.3662 11.9927 20.018 11.7586 19.8623 11.4023C19.3506 10.2304 18.4539 9.26807 17.334 8.66895V6.47754Z"
-                              fill="#868686"/>
+                              fill="#222222"/>
                     </svg>
 
                     Рецепты
@@ -58,28 +58,46 @@
 
 <main class="main-container">
 
-    <section class="recipeFilterStr">
-        <div class="recipeFilter recipeFilter-active" id="allRecipes">
-            <h2>Все рецепты</h2>
-            <div class="rounded-line-active"></div>
+    <section class="searchFilter-container">
+        <div class="recipeFilterStr">
+            <div class="recipeFilter recipeFilter-active" id="allRecipes">
+                <h2>Все рецепты</h2>
+                <div class="rounded-line-active"></div>
+            </div>
+            <div class="recipeFilter" id="accessRecipes">
+                <h2>Хватает продуктов</h2>
+                <div class="rounded-line"></div>
+            </div>
+            <div class="recipeFilter" id="halfRecipes">
+                <h2>Не хватает продуктов</h2>
+                <div class="rounded-line"></div>
+            </div>
         </div>
-        <div class="recipeFilter" id="accessRecipes">
-            <h2>Хватает продуктов</h2>
-            <div class="rounded-line"></div>
-        </div>
-        <div class="recipeFilter" id="halfRecipes">
-            <h2>Не хватает продуктов</h2>
-            <div class="rounded-line"></div>
+
+        <div class="recipeSearchWrapper">
+            <div class="recipeSearchStr">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9.16667" cy="9.16665" r="5.83333" stroke="#868686" stroke-width="2"/>
+                    <path d="M9.16667 6.66669C8.83836 6.66669 8.51327 6.73135 8.20996 6.85699C7.90665 6.98262 7.63105 7.16677 7.3989 7.39892C7.16675 7.63107 6.98261 7.90666 6.85697 8.20998C6.73133 8.51329 6.66667 8.83838 6.66667 9.16669"
+                          stroke="#868686" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M16.6667 16.6667L14.1667 14.1667" stroke="#868686" stroke-width="2"
+                          stroke-linecap="round"/>
+                </svg>
+                <input class="recipeSearchInt" type="text" placeholder="Поиск рецептов...">
+            </div>
         </div>
     </section>
 
-        <section class="recipesFrame">
-            <figure class="recipet">
-
-            </figure>
-        </section>
+    <section class="recipesSection">
+        <article class="recipe-card">
+            <div class="icon"></div>
+            <div class="recipe"></div>
+            <div class="recipe-time"></div>
+        </article>
+    </section>
 </main>
 
-<script src="scripts/"></script>
+<script src="scripts/index.js"></script>
+<script type="module" src="scripts/recipes.js"></script>
 </body>
 </html>
