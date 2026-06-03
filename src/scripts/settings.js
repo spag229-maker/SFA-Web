@@ -1,16 +1,67 @@
-window.onload = function () {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const userKey = currentUser ? currentUser.email : 'guest';
+bash
 
-    if (currentUser) {
-        document.querySelector('.userName').textContent = currentUser.name;
-        document.querySelector('.userMail').textContent = currentUser.email;
-        document.querySelector('.avatar').textContent = currentUser.name.charAt(0).toUpperCase();
+cat > /mnt/user-data/outputs/settings.js << 'EOF'
+const API = 'https://groundlessly-chummy-firebrat.cloudpub.ru';
+
+// ─── Вспомогательные функции API ───────────────────────────────────────────
+
+async function apiGetUser() {
+    const token = localStorage.getItem('userToken');
+    const res   = await fetch(`${API}/users?token=${encodeURIComponent(token)}`);
+    return res.json();
+}
+
+async function apiChangeName(name) {
+    const token = localStorage.getItem('userToken');
+    const res   = await fetch(`${API}/users/name`, {
+        method:  'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ token, name })
+    });
+    return res.json();
+}
+
+async function apiChangePassword(password) {
+    const token = localStorage.getItem('userToken');
+    const res   = await fetch(`${API}/users/password`, {
+        method:  'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ token, password })
+    });
+    return res.json();
+}
+
+// ─── Основной блок ─────────────────────────────────────────────────────────
+
+window.onload = async function () {
+    const token = localStorage.getItem('userToken');
+
+    // Загружаем данные пользователя с бэка
+    let currentUser = null;
+    try {
+        const data = await apiGetUser();
+        if (data.message === 'ok') {
+            currentUser = data.user;
+            document.querySelector('.userName').textContent  = currentUser.name;
+            document.querySelector('.userMail').textContent  = currentUser.email;
+            document.querySelector('.avatar').textContent    = currentUser.name.charAt(0).toUpperCase();
+        } else {
+            // Токен не валиден — на страницу входа
+            localStorage.removeItem('userToken');
+            window.location.href = 'index.html';
+            return;
+        }
+    } catch (e) {
+        console.error('Ошибка загрузки пользователя:', e);
     }
 
+    // ── История удалённых продуктов ───────────────────────────
+    // Ключ истории привязан к токену (как было к email)
+    function getHistoryKey() { return `deletedProducts_${token}`; }
+
     function renderHistory() {
-        const popup = document.getElementById('historyPopup');
-        const history = JSON.parse(localStorage.getItem(`deletedProducts_${userKey}`) || '[]');
+        const popup   = document.getElementById('historyPopup');
+        const history = JSON.parse(localStorage.getItem(getHistoryKey()) || '[]');
 
         popup.querySelectorAll('.popupPlate, p').forEach(el => el.remove());
 
@@ -48,93 +99,106 @@ window.onload = function () {
         if (e.target === this) this.style.display = 'none';
     });
 
-    document.getElementById('historyPopup').addEventListener('click', function (e) {
+    // Восстановление продукта из истории → отправляем на бэк
+    document.getElementById('historyPopup').addEventListener('click', async function (e) {
         const btn = e.target.closest('.deletedProduct');
         if (!btn) return;
 
-        const index = parseInt(btn.dataset.index);
-        const history = JSON.parse(localStorage.getItem(`deletedProducts_${userKey}`) || '[]');
-        const item = history[index];
+        const index   = parseInt(btn.dataset.index);
+        const history = JSON.parse(localStorage.getItem(getHistoryKey()) || '[]');
+        const item    = history[index];
 
-        const products = JSON.parse(localStorage.getItem(`products_${userKey}`) || '[]');
-        products.push(item.html);
-        localStorage.setItem(`products_${userKey}`, JSON.stringify(products));
+        // Восстанавливаем через POST /items
+        try {
+            await fetch(`${API}/items`, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({
+                    token,
+                    items: [{
+                        name:       item.name,
+                        category:   'прочее',
+                        expiration: null,
+                        quantity:   1,
+                        unit:       'шт'
+                    }]
+                })
+            });
+        } catch (e) {
+            console.error('Ошибка восстановления продукта:', e);
+        }
 
         history.splice(index, 1);
-        localStorage.setItem(`deletedProducts_${userKey}`, JSON.stringify(history));
-
+        localStorage.setItem(getHistoryKey(), JSON.stringify(history));
         renderHistory();
     });
 
     document.getElementById('clearHistory').addEventListener('click', function () {
-        localStorage.removeItem(`deletedProducts_${userKey}`);
+        localStorage.removeItem(getHistoryKey());
         renderHistory();
     });
 
-
-    // Открытие попапа имени
+    // ── Смена имени ───────────────────────────────────────────
     document.getElementById('name').addEventListener('click', function () {
-        document.getElementById('newNameInput').value = currentUser ? currentUser.name : '';
+        document.getElementById('newNameInput').value            = currentUser ? currentUser.name : '';
         document.getElementById('newNameInput').style.borderColor = '#E9E9E9';
         document.getElementById('nameChangeOverlay').style.display = 'block';
     });
 
-// Закрытие попапа имени
     document.getElementById('cancelNameChange').addEventListener('click', function () {
         document.getElementById('nameChangeOverlay').style.display = 'none';
     });
+
     document.getElementById('nameChangeOverlay').addEventListener('click', function (e) {
         if (e.target === this) this.style.display = 'none';
     });
 
-// Сохранение имени
-    document.getElementById('confirmNameChange').addEventListener('click', function () {
+    document.getElementById('confirmNameChange').addEventListener('click', async function () {
         const input = document.getElementById('newNameInput');
-        const val = input.value.trim();
+        const val   = input.value.trim();
 
         if (!val || !/^[a-zA-Zа-яА-ЯёЁ\s]+$/.test(val)) {
             input.style.borderColor = '#C2171A';
             return;
         }
 
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
-        const idx = users.findIndex(u => u.email === currentUser.email);
-        if (idx !== -1) {
-            users[idx].name = val;
-            localStorage.setItem('users', JSON.stringify(users));
-            currentUser.name = val;
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            document.querySelector('.userName').textContent = val;
-            document.querySelector('.avatar').textContent = val.charAt(0).toUpperCase();
+        try {
+            const data = await apiChangeName(val);
+            if (data.message === 'ok') {
+                currentUser.name = val;
+                document.querySelector('.userName').textContent = val;
+                document.querySelector('.avatar').textContent   = val.charAt(0).toUpperCase();
+                document.getElementById('nameChangeOverlay').style.display = 'none';
+            } else {
+                alert('Ошибка смены имени: ' + data.message);
+            }
+        } catch (e) {
+            console.error('Ошибка смены имени:', e);
         }
-
-        document.getElementById('nameChangeOverlay').style.display = 'none';
     });
 
-// Сброс рамки при вводе имени
     document.getElementById('newNameInput').addEventListener('input', function () {
         this.style.borderColor = '#E9E9E9';
     });
 
-// Открытие попапа пароля
+    // ── Смена пароля ──────────────────────────────────────────
     document.getElementById('passwordChange').addEventListener('click', function () {
         ['currentPasswordInput', 'newPasswordInput', 'confirmPasswordInput'].forEach(id => {
-            document.getElementById(id).value = '';
+            document.getElementById(id).value            = '';
             document.getElementById(id).style.borderColor = '#E9E9E9';
         });
         document.getElementById('passwordChangeOverlay').style.display = 'block';
     });
 
-// Закрытие попапа пароля
     document.getElementById('cancelPasswordChange').addEventListener('click', function () {
         document.getElementById('passwordChangeOverlay').style.display = 'none';
     });
+
     document.getElementById('passwordChangeOverlay').addEventListener('click', function (e) {
         if (e.target === this) this.style.display = 'none';
     });
 
-// Сохранение пароля
-    document.getElementById('confirmPasswordChange').addEventListener('click', function () {
+    document.getElementById('confirmPasswordChange').addEventListener('click', async function () {
         const current = document.getElementById('currentPasswordInput');
         const newPass = document.getElementById('newPasswordInput');
         const confirm = document.getElementById('confirmPasswordInput');
@@ -142,10 +206,23 @@ window.onload = function () {
 
         [current, newPass, confirm].forEach(el => el.style.borderColor = '#E9E9E9');
 
-        if (current.value !== currentUser.password) {
-            current.style.borderColor = '#C2171A';
+        // Проверяем текущий пароль через POST /login
+        try {
+            const loginCheck = await fetch(`${API}/login`, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({ email: currentUser.email, password: current.value })
+            });
+            const loginData = await loginCheck.json();
+            if (loginData.message !== 'ok') {
+                current.style.borderColor = '#C2171A';
+                valid = false;
+            }
+        } catch (e) {
+            console.error('Ошибка проверки пароля:', e);
             valid = false;
         }
+
         if (newPass.value.length < 8) {
             newPass.style.borderColor = '#C2171A';
             valid = false;
@@ -154,25 +231,31 @@ window.onload = function () {
             confirm.style.borderColor = '#C2171A';
             valid = false;
         }
-
         if (!valid) return;
 
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
-        const idx = users.findIndex(u => u.email === currentUser.email);
-        if (idx !== -1) {
-            users[idx].password = newPass.value;
-            localStorage.setItem('users', JSON.stringify(users));
-            currentUser.password = newPass.value;
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        try {
+            const data = await apiChangePassword(newPass.value);
+            if (data.message === 'ok') {
+                document.getElementById('passwordChangeOverlay').style.display = 'none';
+            } else {
+                alert('Ошибка смены пароля: ' + data.message);
+            }
+        } catch (e) {
+            console.error('Ошибка смены пароля:', e);
         }
-
-        document.getElementById('passwordChangeOverlay').style.display = 'none';
     });
 
-// Сброс рамок при вводе пароля
     ['currentPasswordInput', 'newPasswordInput', 'confirmPasswordInput'].forEach(id => {
         document.getElementById(id).addEventListener('input', function () {
             this.style.borderColor = '#E9E9E9';
         });
     });
 };
+EOF
+Output
+
+exit code 0
+Done
+
+You are out of free messages until 4:20 PM
+Keep working
