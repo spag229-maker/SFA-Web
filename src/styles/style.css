@@ -61,6 +61,7 @@ body {
     color: #B90003;
     text-align: start;
     transition: .3s;
+    position: relative;
 }
 
 .input-group input {
@@ -805,6 +806,32 @@ li:hover .rounded-line-active {
 
 #confirmPasswordChange:hover {
     background-color: #73bffb;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* место под кнопку */
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #888;
+    display: flex;
+    align-items: center;
+}
+.toggle-password .eye-icon,
+.toggle-password .eye-off-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .recipesFrame {

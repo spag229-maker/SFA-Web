@@ -17,28 +17,48 @@
     <div class="register-page">
         <h1>Регистрация</h1>
 
-        <form class="register-form">
+        <form class="register-form" autocomplete="off">
             <div class="input-group">
                 <label for="name"></label>
-                <input id="name" name="name" type="text" placeholder="Имя">
+                <input id="name" name="name" type="text" placeholder="Имя" autocomplete="off">
                 <span class="error-message" id="err-name">Поле Full Name может содержать только буквы</span>
             </div>
 
             <div class="input-group">
                 <label for="email"></label>
-                <input id="email" name="email" type="email" placeholder="Почта">
+                <input id="email" name="email" type="email" placeholder="Почта" autocomplete="off">
                 <span class="error-message" id="err-email">Введите корректный E-mail</span>
             </div>
 
             <div class="input-group password">
                 <label for="password"></label>
-                <input id="password" name="password" type="password" placeholder="Пароль">
+                <div class="password-wrapper">
+                    <input id="password" name="password" type="password" placeholder="Пароль" autocomplete="new-password">
+                    <button type="button" class="toggle-password" data-target="password" tabindex="-1">
+                        <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <svg class="eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                    </button>
+                </div>
                 <span class="error-message" id="err-password">Пароль должен содержать не меньше 8 символов</span>
             </div>
 
             <div class="input-group password">
                 <label for="confirm-password"></label>
-                <input id="confirm-password" name="confirmPassword" type="password" placeholder="Повторите пароль">
+                <div class="password-wrapper">
+                    <input id="confirm-password" name="confirmPassword" type="password" placeholder="Повторите пароль" autocomplete="new-password">
+                    <button type="button" class="toggle-password" data-target="confirm-password" tabindex="-1">
+                        <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <svg class="eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                    </button>
+                </div>
                 <span class="error-message" id="err-rpassword">Пароли должны совпадать</span>
             </div>
 
@@ -48,7 +68,7 @@
 
         </form>
         <button id="logInBtn">
-            <a href="#" id="logIn" class="login ">
+            <a href="#" id="logIn" class="login">
                 Войти в существующий аккаунт
             </a>
         </button>
