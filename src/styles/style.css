@@ -25,6 +25,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 40px;
+    margin-bottom: 20px;
 }
 
 #header {
@@ -213,6 +214,10 @@ li:hover .rounded-line-active {
     transition: .2s ease;
 }
 
+.filterStr {
+    min-height: 168px;
+}
+
 .searchStr:hover,
 .filterStr:hover {
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
@@ -347,6 +352,8 @@ li:hover .rounded-line-active {
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
+    min-width: 300px;
+    min-height: 82px;
 }
 
 .products-card {

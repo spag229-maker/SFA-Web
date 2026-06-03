@@ -1,0 +1,738 @@
+/* ===== RESPONSIVE STYLES: 1440px → 320px ===== */
+
+/* === Глобальный фикс горизонтального скролла === */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+/* === 1440px: широкие экраны === */
+@media (max-width: 1440px) {
+    .container,
+    .main-container {
+        width: 100%;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    #nav-list {
+        padding-left: 100px;
+    }
+}
+
+/* === 1200px: стандартные ноутбуки === */
+@media (max-width: 1200px) {
+    .container,
+    .main-container {
+        padding: 0 24px;
+    }
+
+    #nav-list {
+        padding-left: 40px;
+    }
+
+    .searchFilter-container {
+        width: 320px;
+        flex-shrink: 0;
+    }
+
+    .products-section,
+    .recipesSection {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .settings,
+    .userSettings {
+        width: 260px;
+        flex-shrink: 0;
+    }
+}
+
+/* === 1024px: планшеты в ландшафте === */
+@media (max-width: 1024px) {
+    .container,
+    .main-container {
+        padding: 0 20px;
+    }
+
+    #nav-list {
+        padding-left: 20px;
+    }
+
+    li {
+        margin: 0 15px;
+    }
+
+    #LogTitle {
+        font-size: 20px;
+    }
+
+    .SearchInt {
+        font-size: 18px;
+    }
+
+    .filter-headers {
+        flex-direction: column;
+    }
+
+    .date-list {
+        flex-wrap: wrap;
+    }
+
+    .searchFilter-container {
+        width: 260px;
+        min-width: 0;
+    }
+
+    .products-section,
+    .recipesSection {
+        max-width: 100%;
+        min-width: 0;
+        height: 55vh;
+    }
+
+    .settings,
+    .userSettings {
+        width: 220px;
+        min-width: 0;
+    }
+
+    .popup {
+        width: 80%;
+    }
+
+    #addProductPopup {
+        width: 80%;
+    }
+}
+
+/* === 900px: крупные планшеты === */
+@media (max-width: 900px) {
+    #nav-list {
+        padding-left: 10px;
+        gap: 5px;
+    }
+
+    li {
+        margin: 0 8px;
+    }
+
+    li a {
+        font-size: 14px;
+    }
+
+    li a svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .searchFilter-container {
+        width: 230px;
+        min-width: 0;
+    }
+
+    /* Настройки: стек */
+    .main-content .main-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .user {
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .settings,
+    .userSettings {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/* === 768px: планшеты в портрете === */
+@media (max-width: 768px) {
+    #header {
+        padding: 14px 0;
+    }
+
+    #nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #nav-list {
+        padding-left: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    li {
+        margin: 0;
+        flex: 1;
+        text-align: center;
+        min-width: 0;
+    }
+
+    li a {
+        font-size: 12px;
+        gap: 4px;
+        overflow: hidden;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    #LogTitle {
+        max-width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Обзор/Продукты: вертикальный стек */
+    .main-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .filter-headers {
+        flex-direction: row;
+    }
+
+    .searchFilter-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .searchStr,
+    .filterStr,
+    .addProduct,
+    #addProduct {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .category-item,
+    .date-item {
+        height: 30px;
+        flex-wrap: wrap;
+        min-width: 91px;
+    }
+
+    .products-section {
+        max-width: 100%;
+        width: 100%;
+        height: 40vh;
+    }
+
+    /* Рецепты */
+    .recipeFilterStr {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .recipeSearchWrapper {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .recipesSection {
+        max-width: 100%;
+        width: 100%;
+        height: 40vh;
+    }
+
+    /* Регистрация */
+    .register-page {
+        padding: 0 16px;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .signBtn {
+        font-size: 18px;
+    }
+
+    /* Попапы */
+    .popup {
+        width: 90%;
+        top: 50%;
+    }
+
+    #addProductPopup {
+        width: 90%;
+        top: 50%;
+    }
+
+    .popupPlate {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* === 600px: большие смартфоны === */
+@media (max-width: 600px) {
+    .container,
+    .main-container {
+        padding: 0 12px;
+    }
+
+    #header {
+        padding: 10px 0;
+        margin-bottom: 12px;
+    }
+
+    li a {
+        font-size: 11px;
+    }
+
+    li a svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .SearchInt,
+    .recipeSearchInt {
+        font-size: 16px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .filterTitle {
+        font-size: 17px;
+    }
+
+    .category-item,
+    .date-item {
+        font-size: 13px;
+        padding: 0 8px;
+        height: 30px;
+        flex-wrap: wrap;
+        min-width: 82px;
+    }
+
+    #addProduct {
+        font-size: 17px;
+    }
+
+    .products-card {
+        height: auto;
+        padding: 8px 10px;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .products-name {
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .counter {
+        width: 65px;
+        flex-shrink: 0;
+    }
+
+    .products-section,
+    .recipesSection {
+        padding: 15px 10px;
+        gap: 12px;
+        height: 45vh;
+        width: 100%;
+    }
+
+    /* Настройки */
+    .userInfo {
+        gap: 12px;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+        line-height: 60px;
+        flex-shrink: 0;
+    }
+
+    .userName {
+        font-size: 16px;
+    }
+
+    .settings-plate {
+        padding: 18px 12px;
+    }
+
+    /* Попап добавления */
+    .addPopup-count {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .addPopup-count input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .addPopup-category-list {
+        gap: 6px;
+    }
+
+    .category-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .addPopup-btns button {
+        padding: 10px 22px;
+        font-size: 14px;
+    }
+
+    .recipeFilter h2 {
+        font-size: 17px;
+    }
+
+    .recipeFilterStr {
+        height: auto;
+        padding: 12px;
+    }
+}
+
+/* === 480px: смартфоны === */
+@media (max-width: 480px) {
+    .container,
+    .main-container {
+        padding: 0 8px;
+    }
+
+    #header {
+        margin-bottom: 10px;
+    }
+
+    #nav-list {
+        gap: 0;
+    }
+
+    li a {
+        font-size: 10px;
+        gap: 2px;
+    }
+
+    li a svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .signBtn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .login {
+        font-size: 15px;
+    }
+
+    .input-group input {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .searchStr,
+    .filterStr {
+        height: 60px;
+        width: 100%;
+    }
+
+    .recipeSearchWrapper {
+        height: 60px;
+        width: 100%;
+    }
+
+    .SearchInt,
+    .recipeSearchInt {
+        font-size: 14px;
+    }
+
+    #addProduct {
+        height: 60px;
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .filterTitle {
+        font-size: 15px;
+    }
+
+    .icon {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .product {
+        min-width: 0;
+        overflow: hidden;
+        flex: 1;
+    }
+
+    .products-name {
+        font-size: 13px;
+    }
+
+    .days {
+        font-size: 12px;
+    }
+
+    .product-status {
+        width: 42px;
+        padding: 2px 4px;
+        flex-shrink: 0;
+    }
+
+    .deleteProduct {
+        flex-shrink: 0;
+    }
+
+    .recipe-card {
+        padding: 10px;
+    }
+
+    .recipe-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+
+    .recipe-name {
+        font-size: 14px;
+    }
+
+    .recipe-desc,
+    .recipe-time {
+        font-size: 12px;
+    }
+
+    .user {
+        gap: 15px;
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
+        line-height: 50px;
+    }
+
+    .nameMail {
+        height: auto;
+        gap: 6px;
+        min-width: 0;
+    }
+
+    .userName {
+        font-size: 14px;
+    }
+
+    .userMail {
+        font-size: 11px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .settings-text {
+        font-size: 14px;
+    }
+
+    .popup {
+        width: 95%;
+        padding: 14px;
+    }
+
+    #addProductPopup {
+        width: 95%;
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .popup h2 {
+        font-size: 16px;
+        padding-bottom: 12px;
+    }
+
+    .addPopup-name input {
+        font-size: 14px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .unit-btn {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .addPopup-date-wrapper label,
+    .addPopup-date-wrapper input {
+        font-size: 14px;
+    }
+
+    .popupPlate {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* === 375px: iPhone SE / стандартные смартфоны === */
+@media (max-width: 375px) {
+    .container,
+    .main-container {
+        padding: 0 6px;
+    }
+
+    li a {
+        font-size: 9px;
+    }
+
+    li a svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .rounded-line,
+    .rounded-line-active {
+        display: none;
+    }
+
+    .products-section,
+    .recipesSection {
+        padding: 10px 8px;
+        height: 42vh;
+        gap: 10px;
+    }
+
+    .products-card {
+        padding: 6px 8px;
+        gap: 8px;
+    }
+
+    .icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .counter {
+        width: 58px;
+    }
+
+    .BtnMinus,
+    .BtnPlus {
+        font-size: 14px;
+    }
+
+    .count {
+        font-size: 11px;
+    }
+
+    .signBtn {
+        font-size: 15px;
+        padding: 9px 18px;
+    }
+
+    .addPopup-btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .addPopup-btns button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .recipeFilter h2 {
+        font-size: 14px;
+    }
+
+    .filter-headers {
+        padding-bottom: 8px;
+    }
+}
+
+/* === 320px: минимальный размер === */
+@media (max-width: 320px) {
+    .container,
+    .main-container {
+        padding: 0 4px;
+    }
+
+    li a {
+        font-size: 8px;
+        gap: 1px;
+    }
+
+    li a svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .signBtn {
+        font-size: 13px;
+        padding: 8px 14px;
+        margin-top: 20px;
+    }
+
+    .login {
+        font-size: 13px;
+    }
+
+    .input-group input {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .products-section,
+    .recipesSection {
+        border-radius: 10px;
+    }
+
+    .products-card {
+        border-radius: 20px;
+    }
+
+    .popup {
+        width: 98%;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    #addProductPopup {
+        width: 98%;
+        padding: 10px;
+    }
+
+    .settings,
+    .userSettings {
+        border-radius: 10px;
+    }
+
+    .settings-plate {
+        padding: 14px 10px;
+    }
+
+    .avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+        line-height: 44px;
+    }
+}
